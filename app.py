@@ -11,7 +11,7 @@ Notes:
     2. You can add any symbol on binance to the 'coins' list and it will be added to the scanner
     3. The scanner looks for a price increase over the last second.
         -> If the scanner detects a increase, 'recording' is turned on
-        -> Currently the code will track price increases over 10s (plan to expand futher)
+        -> Currently the code will track price increases over 20s
         -> Console prints occur only if the price has kept rising over the past 5-10s
 '''
 
@@ -80,7 +80,7 @@ def coin_thread(c:str):
 
             # When '_record' is set to 'True', calculate the length of time since '_record_start_time' as long as the price is increasing.
             # '_record_start_time' is the time the recording of price changes starts
-            # This gets reset to 0 after the price stops moving up (or after 10s because i have only built support for 10s so far)
+            # This gets reset to 0 after the price stops moving up (or after 20s because i have only built support for 20s so far)
             else:
                 if coin._price > coin._record_start_price:
                     if coin._price > coin._record_start_price and coin._now-coin._record_start_time >= 5  and coin._5s_status == True:
